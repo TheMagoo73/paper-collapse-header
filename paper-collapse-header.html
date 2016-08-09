@@ -5,7 +5,15 @@
 
 <!--
 `paper-collapse-header`
-A Material design header for collapse regions
+creates a material design header for collapse blocks of content, which can be implemented using the `iron-collapse` element. Use `opened` or  `toggle()` to set the state of the header to match either an open or closed collapse block, and bind the `open` property of an `iron-collapse` to the `open` property of a `paper-collapse-header` to implement the collapsable content block.
+
+```html
+<paper-collapse-header heading="toggle collapse" opened="{{openState}}"></paper-collapse-header>
+
+<iron-collapse opened="{{openState}}">
+  <div>Content goes here...</div>
+<iron-collapse>
+```
 
 @demo demo/index.html
 -->
@@ -65,18 +73,22 @@ A Material design header for collapse regions
       is: 'paper-collapse-header',
 
       properties: {
+        // The primary header test displayed on the left of the header
         heading: {
           type: String
         },
+        // A secondary header displayed after the primary
         subHeading: {
           type: String
         },
+        // Set opened to true to show the header in an open state and false to showit in a closed state. Bind to the opened property of an iron-collapse to implement the full collapse area.
         opened: {
           type: Boolean,
           value: false
         }
       },
 
+      // Toggle the open state
       toggle: function() {
           this.opened = !this.opened;
       }
