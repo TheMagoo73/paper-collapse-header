@@ -1,0 +1,85 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-styles/default-theme.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+
+<!--
+`paper-collapse-header`
+A Material design header for collapse regions
+
+@demo demo/index.html
+-->
+
+<dom-module id="paper-collapse-header">
+  <template>
+    <style>
+      :host {
+        display: block;
+        @apply(--paper-font-common-base);
+      }
+
+      .fullWidth {
+        width: 100%;
+      }
+
+      .heading {
+        font-size: @apply(--paper-font-title);
+        opacity: var(--dark-primary-opacity);
+      }
+
+      .subHeading {
+        font-size: @apply(--paper-font-subhead);
+        opacity: var(--dark-secondary-opacity);
+        padding-left: 16px;
+      }
+
+      .header {
+        overflow: hidden;
+        padding-left: 12px;
+        padding-right: 12px;
+        height: 24px;
+      }
+
+      hr {
+          opacity: var(--dark-divider-opacity);
+      }
+
+      iron-icon {
+        width: 24px;
+        height: 24px;
+        padding-left: 16px;
+        padding-right: 24px;
+        vertical-align: middle;
+        text-align: center;
+        float: right;
+        opacity: var(--dark-disabled-opacity);
+      }
+    </style>
+    <div on-click="toggle" class="fullWidth header"><span class="heading">{{heading}}</span> <span class="subHeading">{{subHeading}}</span><iron-icon hidden="{{opened}}" icon="icons:expand-more"></iron-icon><iron-icon hidden="{{!opened}}" icon="icons:expand-less"></iron-icon></div>
+    <hr class="fullWidth" hidden="{{opened}}"/>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'paper-collapse-header',
+
+      properties: {
+        heading: {
+          type: String
+        },
+        subHeading: {
+          type: String
+        },
+        opened: {
+          type: Boolean,
+          value: false
+        }
+      },
+
+      toggle: function() {
+          this.opened = !this.opened;
+      }
+    });
+  </script>
+</dom-module>
