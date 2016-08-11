@@ -1,4 +1,4 @@
-# <paper-collapse-header>
+# /<paper-collapse-header/>
 
 A Material design header for collapse regions
 
